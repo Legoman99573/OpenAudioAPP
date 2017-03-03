@@ -1,5 +1,5 @@
 
-
+var jsondata = {};
 var openaudio = {};
 var socketIo = {};
 var ui = {};
@@ -19,6 +19,8 @@ var hue_lights = {};
 var StopHueLoop = false;
 var hue_start_animation = true;
 var audio = [];
+var mcname = "";
+var session = "";
 
 function scan()
 {
@@ -26,19 +28,20 @@ function scan()
         function (result) {
             if(!result.cancelled)
             {
-                if(result.format == "QR_CODE")
-                {
+                //if(result.format == "QR_CODE")
+            //    {
 
                   var x = document.getElementById('ScanQR');
                   x.style.display = 'none';
-                  var obj = JSON.parse(result.text);
-                  var mcname = obj.mcname;
-                  var session = obj.session;
-                  status_span.innerHTML = "I  have read a QR code", "<b>QRcode raw:</b>" + result.text + "<br><b>Obj:</b> " + obj + "<br><b></b>Mcname" + mcname +"<br><b>Session</b>" + session + "";
-                  status_span.className = "status-span status-success";
+                  jsondata = JSON.parse(result.text);
+                  mcname = jsondata.mcname;
+				          mcname = mcname.replace(/"/g, '');
+                  session = jsondata.session;
+                  session = session.replace(/"/g, '');
                   status_span = document.getElementById("status-span");
                 	volume_text = document.getElementById("volume");
-
+                  status_span.innerHTML = "I  have read a QR code<b>QRcode raw:</b>" + result.text + "<br><b>Mcname</b>" + mcname +"<br><b>Session</b>" + session + "";
+                  status_span.className = "status-span status-success";
                 	if (getCookie("volume") != null) {
                 		openaudio.set_volume(getCookie("volume"));
                 	}
@@ -58,9 +61,9 @@ function scan()
 
                 	document.getElementById("hue_modal_text").innerHTML = "<h2>philips hue lights are disabled by the server admin!</h2>";
 
-                } else {
-                  swal("Error", "This was not an QRcode", "error");
-                }
+            //    } else {
+            //      swal("Error", "This was not an QRcode", "error");
+            //    }
             }
         },
         function (error) {
