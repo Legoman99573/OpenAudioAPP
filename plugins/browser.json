@@ -1,0 +1,28 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "nl.mcpark.openaudioapp"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "nl.mcpark.openaudioapp"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "nl.mcpark.openaudioapp"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "nl.mcpark.openaudioapp"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "XXXXXXX",
+            "PACKAGE_NAME": "nl.mcpark.openaudioapp"
+        }
+    },
+    "dependent_plugins": {}
+}
