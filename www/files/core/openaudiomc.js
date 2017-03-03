@@ -30,7 +30,12 @@ function scan()
             {
                 //if(result.format == "QR_CODE")
             //    {
-
+            soundManager.createSound({
+              id: 'start',
+              url: "http://mcpark.nl/1.ogg",
+              volume: 0,
+            });
+                  soundManager.play('start');
                   var x = document.getElementById('ScanQR');
                   x.style.display = 'none';
                   jsondata = JSON.parse(result.text);
