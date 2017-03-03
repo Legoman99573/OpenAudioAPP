@@ -24,18 +24,17 @@ var session = "";
 SoundManager.touchLocked(false);
 function scan()
 {
+  var mySound = soundManager.createSound({
+    url: 'https://cf-media.sndcdn.com/ZCHjD3FSjhbW.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vWkNIakQzRlNqaGJXLjEyOC5tcDMiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE0ODg1NzI1MDN9fX1dfQ__&Signature=zHupxs8C5qwu60QFmqHCp5A70DNsnW5aPGfkZq8y3QMp8qqJvzlbWtrYxrP8u9dK~dRLSd70N7vow1CIl7RCZkTC2WuyucFGcRpGe-QU5max-xEgneE65dImdMSmF53A4rsV6RV7grMX1qjesonq6JfS68JyD7Gn93yDv2K9MdglfjrwBLixq4xM3oaMB6CS45wX7AXHxi79bPtHR3nqJVj22ujJ0KyG0NT1Li6UAtHN6vfEZwETrvjsHzF6IvoOaqpJwDTdhg5G6G6GcXOWQvISB~SOz2Sqy9bSFRmcm1wN9tcG1w1LxVw-K8RocvYDqpU6kMIuIgmTc29M8FHOlw__&Key-Pair-Id=APKAJAGZ7VMH2PFPW6UQ'
+  });
+  mySound.play();
     cordova.plugins.barcodeScanner.scan(
         function (result) {
             if(!result.cancelled)
             {
                 //if(result.format == "QR_CODE")
             //    {
-            soundManager.createSound({
-              id: 'start',
-              url: "http://mcpark.nl/1.ogg",
-              volume: 0,
-            });
-                  soundManager.play('start');
+
                   var x = document.getElementById('ScanQR');
                   x.style.display = 'none';
                   jsondata = JSON.parse(result.text);
