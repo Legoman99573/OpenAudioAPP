@@ -21,7 +21,7 @@ var hue_start_animation = true;
 var audio = [];
 var mcname = "";
 var session = "";
-
+SoundManager.touchLocked(false);
 function scan()
 {
     cordova.plugins.barcodeScanner.scan(
@@ -72,7 +72,7 @@ function scan()
    );
 }
 
- 
+
 
 
 socketIo.connect = function() {
