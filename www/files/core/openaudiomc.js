@@ -72,7 +72,7 @@ function scan()
    );
 }
 
-
+ 
 
 
 socketIo.connect = function() {
@@ -450,14 +450,14 @@ openaudio.createBuffer = function(file_to_load) {
 
 
 openaudio.message = function(text) {
-  navigator.notification.alert(
-    text,  // message
-    alertDismissed,         // callback
-    'OpenAudioMC'            // title
-              // buttonName
-);
-function alertDismissed() {
-    // do something
+	if (Notification.permission !== "granted") {
+		Notification.requestPermission();
+	} else {
+		var notification = new Notification("OpenAudioMc | %username%".replace(/%username%/g, mcname), {
+			icon: 'files/images/footer_logo.png',
+			body: text,
+		});
+	}
 }
 
 
