@@ -1,4 +1,3 @@
-
 var jsondata = {};
 var openaudio = {};
 var socketIo = {};
@@ -22,8 +21,8 @@ var audio = [];
 var mcname = "";
 var session = "";
 
-var testoa = soundManager.createSound({
-  url: 'https://cf-media.sndcdn.com/ZCHjD3FSjhbW.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vWkNIakQzRlNqaGJXLjEyOC5tcDMiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE0ODg1NzI1MDN9fX1dfQ__&Signature=zHupxs8C5qwu60QFmqHCp5A70DNsnW5aPGfkZq8y3QMp8qqJvzlbWtrYxrP8u9dK~dRLSd70N7vow1CIl7RCZkTC2WuyucFGcRpGe-QU5max-xEgneE65dImdMSmF53A4rsV6RV7grMX1qjesonq6JfS68JyD7Gn93yDv2K9MdglfjrwBLixq4xM3oaMB6CS45wX7AXHxi79bPtHR3nqJVj22ujJ0KyG0NT1Li6UAtHN6vfEZwETrvjsHzF6IvoOaqpJwDTdhg5G6G6GcXOWQvISB~SOz2Sqy9bSFRmcm1wN9tcG1w1LxVw-K8RocvYDqpU6kMIuIgmTc29M8FHOlw__&Key-Pair-Id=APKAJAGZ7VMH2PFPW6UQ'
+var mySound = soundManager.createSound({
+ url: 'http://mcpark.nl/1.ogg'
 });
 
 function scan()
@@ -39,13 +38,9 @@ function scan()
                   x.style.display = 'none';
                   jsondata = JSON.parse(result.text);
                   mcname = jsondata.mcname;
-				          mcname = mcname.replace(/"/g, '');
                   session = jsondata.session;
-                  session = session.replace(/"/g, '');
                   status_span = document.getElementById("status-span");
                 	volume_text = document.getElementById("volume");
-                  status_span.innerHTML = "I  have read a QR code<b>QRcode raw:</b>" + result.text + "<br><b>Mcname</b>" + mcname +"<br><b>Session</b>" + session + "";
-                  status_span.className = "status-span status-success";
                 	if (getCookie("volume") != null) {
                 		openaudio.set_volume(getCookie("volume"));
                 	}
@@ -83,7 +78,6 @@ socketIo.connect = function() {
 	var socket = io.connect("https://craftmendserver.eu:3000", {
 		secure: true
 	});
-      console.log("JEP");
 	closedwreason = false;
 	socket.on('command', function(msg) {
 		if (msg == "connectionSuccess") {

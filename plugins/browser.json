@@ -13,9 +13,6 @@
         "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "nl.mcpark.openaudioapp"
         },
-        "cordova-plugin-nativeaudio": {
-            "PACKAGE_NAME": "nl.mcpark.openaudioapp"
-        },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "nl.mcpark.openaudioapp"
         },
