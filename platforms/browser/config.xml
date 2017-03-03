@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="nl.mcpark.openaudioapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <feature name="BarcodeScanner">
+        <param name="browser-package" value="BarcodeScanner" />
+    </feature>
+    <name>OpenAudioAPP</name>
+    <description>
+        The openaudio client for your phone!
+    </description>
+    <author email="melerpe.habbozz@live.nl" href="http://mcpark.nl">
+        Openaudo Team
+    </author>
+    <content src="main.html" />
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <access origin="craftmend.com*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="14" />
+</widget>
