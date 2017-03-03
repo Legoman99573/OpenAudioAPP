@@ -453,10 +453,12 @@ openaudio.message = function(text) {
   navigator.notification.alert(
     text,  // message
     alertDismissed,         // callback
-    "OpenAudioMc | %username%".replace(/%username%/g, mcname)            // title
+    'OpenAudioMC'            // title
               // buttonName
 );
-
+function alertDismissed() {
+    // do something
+}
 
 
 
