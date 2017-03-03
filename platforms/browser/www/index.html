@@ -27,10 +27,10 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
 <meta http-equiv="Content-Security-Policy" content="
-    default-src *; 
-    style-src * 'unsafe-inline'; 
-    script-src * 'unsafe-inline'; 
-    media-src *; img-src * data:; 
+    default-src *;
+    style-src * 'unsafe-inline';
+    script-src * 'unsafe-inline';
+    media-src *; img-src * data:;
 " />
     <!-- Good default declaration:
     * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
@@ -62,11 +62,6 @@
 	<!-- ICON -->
 	<link rel="icon" href="files/images/small_logo.png" />
 	<link rel="image" href="files/images/small_logo.png" />
-	<script>
-		mcname = "Melerpe";
-		session = "uunmkOQinatEtBH:zepvu";
-		socket_io = "https://craftmendserver.eu:3000";
-	</script>
 	<!-- JS -->
 	<script src="files/js/jquery.js"></script>
 	<script src="files/js/jqueryui.js"></script>
@@ -80,11 +75,31 @@
 
 </head>
 <body>
-
+	<div id="UserBox" aria-hidden="true">
+		<aside class="profile-card" id="box" aria-hidden="true">
+			<div class="box">
+				<span id="status-span" class="status-span status-warning">Connecting to server...</span>
+				<div class="inner-box">
+					<br><br>
+					<div class="container">
+						<img src="https://crafatar.com/avatars/Melerpe?overlay" id="skull" class="skull">
+					</div>
+					<br><br>
+					<div class="slider">
+		  			<input type="range" name="volume" id="slider" min="0" max="100" value="20" oninput="openaudio.set_volume(this.value); sliderValue(value);" onchange='document.cookie = "volume=" + this.value;' />
+		  			<output for="volume" id="volumevalue">20</output>
+					</div>
+				</div>
+				<div class="icons">
+					<li><i class="fa fa-lightbulb-o fa-2x footer-icon first" aria-hidden="true" data-toggle="modal" data-target="#Hue"></i></li>
+				</div>
+			</div>
+		</aside>
+	</div>
 
 
 <div id="ScanQR">
-		<aside class="profile-card" id="box">
+		<aside class="profile-card" id="box1">
 			<div class="box">
 				<span id="status-span" class="status-span status-info">Please scan the QR code</span>
 				<div class="inner-box">
@@ -94,13 +109,14 @@
 					</div>
 					<br><br>
 					<div class="slider">
-		  			<input type="button" class="btn btn-success btn-large" name="scanqr" id="scanqr" value="Click to scan your QR code" onclick='	swal("Waarshuwing", "Deze functie is nog niet beschikbaar!", "error");'  />
+		  			<input type="button" class="btn btn-success btn-large" name="scanqr" id="scanqr" value="Click to scan your QR code" onclick='scan();'  />
 					</div>
+					<p>Warning: This is a alpha version, use with caution!</p>
 				</div>
 			</div>
 		</aside>
 	</div>
-	
+
 
 
 
@@ -155,19 +171,17 @@
 	</div>
 </body>
 <footer>
-	<span>OpenAudio 2.0 - <a href="http://openaudiomc.net/">OpenAudioMC</a></span>
+	<span>OpenAudioAPP 0.0.1-ALPHA</a></span>
 </footer>
 <img class="footer-logo" src="files/images/footer_logo.png">
 
 
-	
-	
-	
-	
-	
-	
-		<script src="/js/index.js"></script>
-	
+
+
+
+
+
+	<script src="/js/index.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
         app.initialize();

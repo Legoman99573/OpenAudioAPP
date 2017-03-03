@@ -28,20 +28,38 @@ function scan()
             {
                 if(result.format == "QR_CODE")
                 {
-					enable();
-                    navigator.notification.prompt("Please enter name of data",  function(input){
-                        var name = input.input1;
-                        var value = result.text;
 
-                        var data = localStorage.getItem("LocalData");
-                        console.log(data);
-                        data = JSON.parse(data);
-                        data[data.length] = [name, value];
+                  var x = document.getElementById('ScanQR');
+                  x.style.display = 'none';
+                  var obj = JSON.parse(result.text);
+                  var mcname = obj.mcname;
+                  var session = obj.session;
+                  status_span.innerHTML = "I  have read a QR code", "<b>QRcode raw:</b>" + result.text + "<br><b>Obj:</b> " + obj + "<br><b></b>Mcname" + mcname +"<br><b>Session</b>" + session + "";
+                  status_span.className = "status-span status-success";
+                  status_span = document.getElementById("status-span");
+                	volume_text = document.getElementById("volume");
 
-                        localStorage.setItem("LocalData", JSON.stringify(data));
+                	if (getCookie("volume") != null) {
+                		openaudio.set_volume(getCookie("volume"));
+                	}
 
-                        alert("Done");
-                    });
+                	//setup session data
+                	var [a, b] = session.split(':');
+                	clientID = a;
+                	clientTOKEN = b;
+
+                	//connect to the craftmend server
+                	socketIo.connect();
+                	document.getElementById("DetectHueButton").style.display = "none";
+
+                	if (Notification.permission !== "granted") {
+                		Notification.requestPermission();
+                	}
+
+                	document.getElementById("hue_modal_text").innerHTML = "<h2>philips hue lights are disabled by the server admin!</h2>";
+
+                } else {
+                  swal("Error", "This was not an QRcode", "error");
                 }
             }
         },
@@ -51,36 +69,14 @@ function scan()
    );
 }
 
-function enable() {
-	//setup vars
-	status_span = document.getElementById("status-span");
-	volume_text = document.getElementById("volume");
 
-	if (getCookie("volume") != null) {
-		openaudio.set_volume(getCookie("volume"));
-	}
-
-	//setup session data
-	var [a, b] = session.split(':');
-	clientID = a;
-	clientTOKEN = b;
-
-	//connect to the craftmend server
-	socketIo.connect();
-	document.getElementById("DetectHueButton").style.display = "none";
-
-	if (Notification.permission !== "granted") {
-		Notification.requestPermission();
-	}
-
-	document.getElementById("hue_modal_text").innerHTML = "<h2>philips hue lights are disabled by the server admin!</h2>";
-}
 
 
 socketIo.connect = function() {
 	var socket = io.connect("https://craftmendserver.eu:3000", {
 		secure: true
 	});
+      console.log("JEP");
 	closedwreason = false;
 	socket.on('command', function(msg) {
 		if (msg == "connectionSuccess") {
@@ -205,7 +201,7 @@ openaudio.decode = function(msg) {
 		var arrayLength = myStringArray.length;
 		PlayList_songs = {};
 		for (var i = 0; i < arrayLength; i++) {
-			var song = myStringArray[i];		
+			var song = myStringArray[i];
 			if (song.includes("soundcloud.com")) {
 				song = "https://craftmend.com/api_SSL/soundcloud/?file=" + song;
 			}
