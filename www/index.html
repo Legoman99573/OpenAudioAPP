@@ -23,15 +23,13 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-<meta http-equiv="Content-Security-Policy" content="
-    default-src *;
-    style-src * 'unsafe-inline';
-    script-src * 'unsafe-inline';
-    media-src *; img-src * data:;
-" />
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src *;
+        style-src * 'unsafe-inline';
+        script-src * 'unsafe-inline';
+        media-src *; img-src * data:;
+    " />
     <!-- Good default declaration:
     * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
     * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
@@ -120,7 +118,6 @@
 					<br><br>
 					<div class="slider">
 		  			<input type="button" class="btn btn-success btn-large" name="scanqr" id="scanqr" value="Click to scan your QR code" onclick='scan();'  />
-            <input type="button" class="btn btn-warning btn-large" name="scanqr" id="scanqr" value="This should play some music!" onclick='mySound.play();'  />
 					</div>
 					<p>Warning: This is a alpha version, use with caution!</p>
 				</div>

@@ -21,9 +21,7 @@ var audio = [];
 var mcname = "";
 var session = "";
 
-var mySound = soundManager.createSound({
- url: 'http://mcpark.nl/1.ogg'
-});
+
 
 function scan()
 {
