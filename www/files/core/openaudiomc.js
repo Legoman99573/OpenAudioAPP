@@ -47,7 +47,7 @@ function scan()
                 	var [a, b] = session.split(':');
                 	clientID = a;
                 	clientTOKEN = b;
-
+                  document.getElementById("skull").src = "https://crafatar.com/avatars/" + mcname + "?overlay";
                 	//connect to the craftmend server
                 	socketIo.connect();
                 	document.getElementById("DetectHueButton").style.display = "none";
