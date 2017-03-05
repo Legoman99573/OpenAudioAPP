@@ -1,6 +1,6 @@
 var jsondata = {};
 var openaudio = {};
-var socketIo = "";
+var socketIo = {};
 var ui = {};
 var fadingData = {};
 var stopFading = {};
@@ -20,7 +20,7 @@ var hue_start_animation = true;
 var audio = [];
 var mcname = "";
 var session = "";
-
+var socket_io ="https://craftmendserver.eu:3000";
 
 
 function scan()
@@ -70,7 +70,7 @@ function scan()
 
 
 socketIo.connect = function() {
-	var socket = io.connect("https://craftmendserver.eu:3000/", {
+	var socket = io.connect(socket_io, {
 		secure: true
 	});
 	closedwreason = false;

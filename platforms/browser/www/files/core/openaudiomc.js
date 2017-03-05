@@ -20,7 +20,7 @@ var hue_start_animation = true;
 var audio = [];
 var mcname = "";
 var session = "";
-
+var socket_io ="https://craftmendserver.eu:3000";
 
 
 function scan()
@@ -29,16 +29,16 @@ function scan()
         function (result) {
             if(!result.cancelled)
             {
-                //if(result.format == "QR_CODE")
-            //    {
-
+              //  if(result.format == "QR_CODE")
+          //    {
+                status_span = document.getElementById("status-span");
+                volume_text = document.getElementById("volume");
                   var x = document.getElementById('ScanQR');
                   x.style.display = 'none';
                   jsondata = JSON.parse(result.text);
                   mcname = jsondata.mcname;
                   session = jsondata.session;
-                  status_span = document.getElementById("status-span");
-                	volume_text = document.getElementById("volume");
+
                 	if (getCookie("volume") != null) {
                 		openaudio.set_volume(getCookie("volume"));
                 	}
@@ -52,15 +52,12 @@ function scan()
                 	socketIo.connect();
                 	document.getElementById("DetectHueButton").style.display = "none";
 
-                	if (Notification.permission !== "granted") {
-                		Notification.requestPermission();
-                	}
 
                 	document.getElementById("hue_modal_text").innerHTML = "<h2>philips hue lights are disabled by the server admin!</h2>";
 
-            //    } else {
-            //      swal("Error", "This was not an QRcode", "error");
-            //    }
+            //   } else {
+            //     swal("Error", "This was not an QRcode", "error");
+              //  }
             }
         },
         function (error) {
@@ -73,7 +70,7 @@ function scan()
 
 
 socketIo.connect = function() {
-	var socket = io.connect("https://craftmendserver.eu:3000", {
+	var socket = io.connect(socket_io, {
 		secure: true
 	});
 	closedwreason = false;
