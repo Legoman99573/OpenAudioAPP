@@ -64,17 +64,8 @@ function scan()
             }
         },
         function (error) {
-           swal("Error", "QR code couldn't be read", "error");
-        },
-      {
-          preferFrontCamera : true, // iOS and Android
-          showFlipCameraButton : true, // iOS and Android
-          showTorchButton : true, // iOS and Android
-          torchOn: true, // Android, launch with the torch switched on (if available)
-          prompt : "Place a barcode inside the scan area", // Android
-          resultDisplayDuration: 0, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
-          formats : "QR_CODE", // default: all but PDF_417 and RSS_EXPANDED
-      }
+           swal("Error", "QR code couldn't be read" + error, "error");
+        }
    );
 }
 
