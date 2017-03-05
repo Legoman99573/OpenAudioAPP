@@ -29,8 +29,8 @@ function scan()
         function (result) {
             if(!result.cancelled)
             {
-                //if(result.format == "QR_CODE")
-            //    {
+                if(result.format == "QR_CODE")
+              {
 
                   var x = document.getElementById('ScanQR');
                   x.style.display = 'none';
@@ -58,9 +58,9 @@ function scan()
 
                 	document.getElementById("hue_modal_text").innerHTML = "<h2>philips hue lights are disabled by the server admin!</h2>";
 
-            //    } else {
-            //      swal("Error", "This was not an QRcode", "error");
-            //    }
+               } else {
+                 swal("Error", "This was not an QRcode", "error");
+                }
             }
         },
         function (error) {
@@ -83,7 +83,7 @@ socketIo.connect = function() {
 			status_span.className = "status-span status-success";
 		} else if (msg == "not_in_server") {
 			status_span.innerHTML = "You're not connected to the server...";
-			status_span.className = "status-span status-error"
+			status_span.className = "status-span status-error";
 		} else if (msg == "connected") {
 
 		} else {
