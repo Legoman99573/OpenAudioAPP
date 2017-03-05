@@ -6,9 +6,9 @@
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src *;
-        style-src *;
-        script-src * ;
-        media-src *; img-src *;
+        style-src * 'unsafe-inline';
+        script-src * 'unsafe-inline';
+        media-src *; img-src * data:;
     " />
 	<!-- OpenAudioMC by Mindgamesnl -->
 
@@ -155,15 +155,10 @@
 
 
 
+	<script src="/js/index.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
-    function onDeviceReady() {
-      // Now safe to use the PhoneGap API
-      StatusBar.hide();
-      StatusBar.styleLightContent();
-    }
-
-    document.addEventListener("deviceready", onDeviceReady, false);
+        app.initialize();
     </script>
 </body>
 

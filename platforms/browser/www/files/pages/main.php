@@ -1,15 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src *;
-        style-src *;
-        script-src * ;
-        media-src *; img-src *;
-    " />
 	<!-- OpenAudioMC by Mindgamesnl -->
 
 	<!-- Title -->
@@ -30,6 +22,7 @@
 	<!-- ICON -->
 	<link rel="icon" href="files/images/small_logo.png" />
 	<link rel="image" href="files/images/small_logo.png" />
+
 	<!-- JS -->
 	<script src="files/js/jquery.js"></script>
 	<script src="files/js/jqueryui.js"></script>
@@ -39,28 +32,23 @@
 	<script src="files/js/hueapi.js"></script>
 	<script src="files/core/openaudiomc.js"></script>
 	<script src="files/js/soundmanager2.js"></script>
-	<script src="https://craftmendserver.eu:3000/socket.io/socket.io.js"></script> <!--Soon to be automated!!!-->
-
+	<script src="<?php echo $socket_io_js; ?>"></script>
+	<script>
+		mcname = "<?php echo $mcuser; ?>";
+		session = "<?php echo $sessionToken; ?>";
+		socket_io = "<?php echo $socket_io_host; ?>";
+	</script>
 </head>
+
 <body>
-  <footer>
-    <p>
-    <span style="float: right">v1.0.0</span>
-    <span style="float: left">OpenAudio APP</span>
-  </p>
-  </footer>
-    <img class="footer-logo" src="files/images/footer_logo.png">
-
-
-
-	<div id="UserBox" aria-hidden="true">
-		<aside class="profile-card" id="box" aria-hidden="true">
+	<div id="UserBox">
+		<aside class="profile-card" id="box">
 			<div class="box">
 				<span id="status-span" class="status-span status-warning">Connecting to server...</span>
 				<div class="inner-box">
 					<br><br>
 					<div class="container">
-						<img src="https://crafatar.com/avatars/Melerpe?overlay" id="skull" class="skull">
+						<img src="https://crafatar.com/avatars/<?php echo $mcuser; ?>?overlay" id="skull" class="skull">
 					</div>
 					<br><br>
 					<div class="slider">
@@ -70,32 +58,11 @@
 				</div>
 				<div class="icons">
 					<li><i class="fa fa-lightbulb-o fa-2x footer-icon first" aria-hidden="true" data-toggle="modal" data-target="#Hue"></i></li>
+					<li><i class="fa fa-qrcode fa-2x footer-icon fa-qr-check" aria-hidden="true" onclick="showqr();"></i></li>
 				</div>
 			</div>
 		</aside>
 	</div>
-
-
-<div id="ScanQR">
-		<aside class="profile-card" id="box1">
-			<div class="box">
-				<span id="status-span1" class="status-span status-info">Please scan the QR code</span>
-				<div class="inner-box">
-					<br><br>
-					<div class="container">
-						<img src="https://crafatar.com/avatars/Steve?overlay" id="skull1" class="skull">
-					</div>
-					<br><br>
-					<div class="slider">
-		  			<input type="button" class="btn btn-success btn-large" name="scanqr" id="scanqr" value="Click to scan your QR code" onclick='scan();'  />
-					</div>
-					<p>Warning: This is a alpha version, use with caution! If you are not able to hear any music, click on the link below (If you have Chrome)</p><br><p><center><a href="chrome://flags/#disable-gesture-requirement-for-media-playback">Click for fix!</a></center></p>
-				</div>
-			</div>
-		</aside>
-	</div>
-
-
 
 
 
@@ -148,23 +115,9 @@
 
 	</div>
 </body>
-
-
-
-
-
-
-
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript">
-    function onDeviceReady() {
-      // Now safe to use the PhoneGap API
-      StatusBar.hide();
-      StatusBar.styleLightContent();
-    }
-
-    document.addEventListener("deviceready", onDeviceReady, false);
-    </script>
-</body>
+<footer>
+	<span>OpenAudio 2.0 - <a href="http://openaudiomc.net/">OpenAudioMC</a></span>
+</footer>
+<img class="footer-logo" src="files/images/footer_logo.png">
 
 </html>
