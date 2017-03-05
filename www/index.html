@@ -6,9 +6,9 @@
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src *;
-        style-src *;
-        script-src * ;
-        media-src *; img-src *;
+        style-src * 'unsafe-inline';
+        script-src * 'unsafe-inline';
+        media-src *; img-src * data:;
     " />
 	<!-- OpenAudioMC by Mindgamesnl -->
 
@@ -31,6 +31,7 @@
 	<link rel="icon" href="files/images/small_logo.png" />
 	<link rel="image" href="files/images/small_logo.png" />
 	<!-- JS -->
+
 	<script src="files/js/jquery.js"></script>
 	<script src="files/js/jqueryui.js"></script>
 	<script src="files/js/bootstrap.js"></script>
@@ -40,7 +41,7 @@
 	<script src="files/core/openaudiomc.js"></script>
 	<script src="files/js/soundmanager2.js"></script>
 	<script src="https://craftmendserver.eu:3000/socket.io/socket.io.js"></script> <!--Soon to be automated!!!-->
-
+    <script type="text/javascript" src="cordova.js"></script>
 </head>
 <body>
   <footer>
@@ -155,16 +156,7 @@
 
 
 
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript">
-    function onDeviceReady() {
-      // Now safe to use the PhoneGap API
-      StatusBar.hide();
-      StatusBar.styleLightContent();
-    }
 
-    document.addEventListener("deviceready", onDeviceReady, false);
-    </script>
 </body>
 
 </html>
