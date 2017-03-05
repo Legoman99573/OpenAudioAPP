@@ -1,6 +1,6 @@
 var jsondata = {};
 var openaudio = {};
-var socketIo = {};
+var socketIo = "";
 var ui = {};
 var fadingData = {};
 var stopFading = {};
@@ -29,16 +29,16 @@ function scan()
         function (result) {
             if(!result.cancelled)
             {
-                if(result.format == "QR_CODE")
-              {
-
+              //  if(result.format == "QR_CODE")
+          //    {
+                status_span = document.getElementById("status-span");
+                volume_text = document.getElementById("volume");
                   var x = document.getElementById('ScanQR');
                   x.style.display = 'none';
                   jsondata = JSON.parse(result.text);
                   mcname = jsondata.mcname;
                   session = jsondata.session;
-                  status_span = document.getElementById("status-span");
-                	volume_text = document.getElementById("volume");
+
                 	if (getCookie("volume") != null) {
                 		openaudio.set_volume(getCookie("volume"));
                 	}
@@ -52,15 +52,12 @@ function scan()
                 	socketIo.connect();
                 	document.getElementById("DetectHueButton").style.display = "none";
 
-                	if (Notification.permission !== "granted") {
-                		Notification.requestPermission();
-                	}
 
                 	document.getElementById("hue_modal_text").innerHTML = "<h2>philips hue lights are disabled by the server admin!</h2>";
 
-               } else {
-                 swal("Error", "This was not an QRcode", "error");
-                }
+            //   } else {
+            //     swal("Error", "This was not an QRcode", "error");
+              //  }
             }
         },
         function (error) {
@@ -73,7 +70,7 @@ function scan()
 
 
 socketIo.connect = function() {
-	var socket = io.connect("https://craftmendserver.eu:3000", {
+	var socket = io.connect("https://craftmendserver.eu:3000/", {
 		secure: true
 	});
 	closedwreason = false;
@@ -83,7 +80,7 @@ socketIo.connect = function() {
 			status_span.className = "status-span status-success";
 		} else if (msg == "not_in_server") {
 			status_span.innerHTML = "You're not connected to the server...";
-			status_span.className = "status-span status-error";
+			status_span.className = "status-span status-error"
 		} else if (msg == "connected") {
 
 		} else {
