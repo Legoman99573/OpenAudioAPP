@@ -13,17 +13,10 @@
         "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "nl.mcpark.openaudioapp"
         },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "nl.mcpark.openaudioapp"
-        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "nl.mcpark.openaudioapp"
         },
         "phonegap-plugin-barcodescanner": {
-            "PACKAGE_NAME": "nl.mcpark.openaudioapp"
-        },
-        "phonegap-plugin-push": {
-            "SENDER_ID": "XXXXXXX",
             "PACKAGE_NAME": "nl.mcpark.openaudioapp"
         }
     },
