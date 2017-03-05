@@ -39,10 +39,9 @@ function scan()
                   session = jsondata.session;
                   status_span = document.getElementById("status-span");
                 	volume_text = document.getElementById("volume");
-                	if (getCookie("volume") != null) {
-                		openaudio.set_volume(getCookie("volume"));
+                	if (localStorage.getItem("volume") != null) {
+                		openaudio.set_volume(localStorage.getItem("volume"));
                 	}
-
                 	//setup session data
                 	var [a, b] = session.split(':');
                 	clientID = a;
@@ -386,11 +385,13 @@ openaudio.set_volume = function(volume_var) {
 		document.getElementById("volumevalue").innerHTML = 100;
 		document.getElementById("volumevalue").style.left = 100 * 2.425 + 'px';
 		volume = 100;
+    localStorage.setItem('volume', volume);
 	} else if (volume_var < 0) {
 		document.getElementById("slider").value = 0;
 		volume_text.innerHTML = "Volume: 0%";
 		soundManager.setVolume(0);
 		volume = 0;
+    localStorage.setItem('volume', volume);
 		document.getElementById("volumevalue").innerHTML = 0;
 		document.getElementById("volumevalue").style.left = 0 * 2.425 + 'px';
 	} else {
@@ -398,6 +399,7 @@ openaudio.set_volume = function(volume_var) {
 		document.getElementById("volumevalue").innerHTML = volume_var;
 		document.getElementById("volumevalue").style.left = volume_var * 2.425 + 'px';
 		volume = volume_var;
+    localStorage.setItem('volume', volume);
 		soundManager.setVolume(volume_var);
 	}
 }
@@ -409,14 +411,17 @@ openaudio.set_volume2 = function(volume_var) {
 		document.getElementById("slider").value = 100;
 		soundManager.setVolume(100);
 		volume = 100;
+    localStorage.setItem('volume', volume);
 	} else if (volume_var < 0) {
 		document.getElementById("slider").value = 0;
 		soundManager.setVolume(0);
 		volume = 0;
+    localStorage.setItem('volume', volume);
 	} else {
 		document.getElementById("slider").value = volume_var;
 		volume = volume_var;
 		soundManager.setVolume(volume_var);
+    localStorage.setItem('volume', volume);
 	}
 }
 
@@ -936,7 +941,7 @@ function showqr() {
 
 
 function getCookie(name) {
-	var value = "; " + document.cookie;
+	var value = "; " + ;
 	var parts = value.split("; " + name + "=");
 	if (parts.length == 2) {
 		return parts.pop().split(";").shift();
