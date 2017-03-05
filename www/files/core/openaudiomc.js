@@ -39,7 +39,7 @@ function scan()
                   session = jsondata.session;
                   status_span = document.getElementById("status-span");
                 	volume_text = document.getElementById("volume");
-                	if (getCookie("volume") !== null) {
+                	if (getCookie("volume") != null) {
                 		openaudio.set_volume(getCookie("volume"));
                 	}
 
@@ -67,6 +67,8 @@ function scan()
            swal("Error", "QR code couldn't be read", "error");
         },
       {
+          preferFrontCamera : true, // iOS and Android
+          showFlipCameraButton : true, // iOS and Android
           showTorchButton : true, // iOS and Android
           torchOn: true, // Android, launch with the torch switched on (if available)
           prompt : "Place a barcode inside the scan area", // Android
@@ -90,7 +92,7 @@ socketIo.connect = function() {
 			status_span.className = "status-span status-success";
 		} else if (msg == "not_in_server") {
 			status_span.innerHTML = "You're not connected to the server...";
-			status_span.className = "status-span status-error";
+			status_span.className = "status-span status-error"
 		} else if (msg == "connected") {
 
 		} else {
@@ -136,9 +138,9 @@ socketIo.connect = function() {
 	socket.on('connect', function() {
 		socketIo.log("Connecting as:\nUser: " + mcname + "\nId: " + clientID + "\nToken: " + clientTOKEN);
 		closedwreason = false;
-		socket.emit("message", '{"type":"client","clientid":"' + clientID + '","user":"' + mcname + '","key":"' + clientTOKEN + '","type":3}');
+		socket.emit("message", '{"type":"client","clientid":"' + clientID + '","user":"' + mcname + '","key":"' + clientTOKEN + '"}');
 	});
-};
+}
 
 
 
