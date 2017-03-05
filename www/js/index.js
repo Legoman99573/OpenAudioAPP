@@ -34,7 +34,6 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         StatusBar.hide();
-        console.log('YEAH the page is done loading');
     },
 
 };
