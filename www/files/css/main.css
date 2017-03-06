@@ -423,8 +423,8 @@ p {
   -khtml-border-radius: 8px;
   border-radius: 8px;
   overflow: hidden;
-  height: 180px;
-  width: 180px;
+  height: auto;
+  width: 70%;
   box-shadow: 5px 5px 5px #888888;
 }
 
