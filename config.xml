@@ -24,6 +24,9 @@
     <platform name="windows">
         <icon src="www/res/icon/logo.png" />
     </platform>
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="AllowInlineMediaPlayback" value="true"/>
+    <preference name="Fullscreen" value="true" />
     <access origin="*" />
     <allow-navigation href="*" />
     <access origin="craftmend.com*" />
