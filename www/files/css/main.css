@@ -86,9 +86,9 @@ p {
 
 .inner-box {
   padding: 10px;
-  width: 90%;
-  height: 60%;
-  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+  margin: 15%;
 }
 
 @keyframes box {
