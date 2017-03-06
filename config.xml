@@ -15,10 +15,11 @@
     <platform name="android">
         <icon src="www/res/icon/logo.png" />
     </platform>
+	
     <platform name="ios">
         <icon src="www/res/icon/logo.png" />
     </platform>
-    <platform name="wp8">
+    <platform name="winphone" />
         <icon src="www/res/icon/logo.png" />
     </platform>
     <platform name="windows">
