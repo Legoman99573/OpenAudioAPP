@@ -2,6 +2,7 @@ var jsondata = {};
 var openaudio = {};
 var socketIo = {};
 var ui = {};
+var io = {};
 var fadingData = {};
 var stopFading = {};
 var isFading = {};
