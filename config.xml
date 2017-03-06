@@ -5,7 +5,7 @@
         The openaudio client for your phone!
     </description>
     <author email="melerpe.habbozz@live.nl" href="http://mcpark.nl">
-        Openaudo Team
+        SnowBlinder
     </author>
     <content src="main.html" />
     <preference name="DisallowOverscroll" value="true" />
