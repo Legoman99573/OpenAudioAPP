@@ -20,7 +20,6 @@ var hue_start_animation = true;
 var audio = [];
 var mcname = "";
 var session = "";
-var socket_io ="https://craftmendserver.eu:3000";
 
 
 function scan()
@@ -70,7 +69,7 @@ function scan()
 
 
 socketIo.connect = function() {
-	var socket = io.connect(socket_io, {
+	var socket = io.connect('https://craftmendserver.eu:3000', {
 		secure: true
 	});
 	closedwreason = false;
